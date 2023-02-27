@@ -99,3 +99,53 @@ $(window)
     });
   })
   .scroll();
+//Back to top btn
+var btn = $("#top");
+
+$(window).scroll(function () {
+  if ($(window).scrollTop() > 300) {
+    btn.addClass("show");
+  } else {
+    btn.removeClass("show");
+  }
+});
+
+btn.on("click", function (e) {
+  e.preventDefault();
+  $("html, body").animate({ scrollTop: 0 }, "300");
+});
+
+//Product slider
+$(".slider")
+  .on("initialized.owl.carousel changed.owl.carousel", function (e) {
+    if (!e.namespace) {
+      return;
+    }
+    $("#counter").text(
+      e.relatedTarget.relative(e.item.index) + 1 + "  /  " + e.item.count
+    );
+  })
+  .owlCarousel({
+    items: 1,
+    loop: true,
+    dots: false,
+    nav: false,
+  });
+
+$(document).ready(function () {
+  var owl = $(".owl-carousel");
+  owl.owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: false,
+    items: 1,
+  });
+
+  // Custom Button
+  $(".nextBtn").click(function () {
+    owl.trigger("next.owl.carousel");
+  });
+  $(".prevBtn").click(function () {
+    owl.trigger("prev.owl.carousel");
+  });
+});
