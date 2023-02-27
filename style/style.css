@@ -604,6 +604,9 @@ a {
   border-bottom: 1px solid #303030;
   width: 100%;
 }
+.product-section {
+  margin-bottom: 160px;
+}
 .product-section .slider-item {
   height: auto;
 }
@@ -667,4 +670,7 @@ a {
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #303030;
+}
+hr {
+  margin: 70px 0 60px;
 }
