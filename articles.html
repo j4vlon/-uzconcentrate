@@ -414,72 +414,21 @@
     <div class="articles-wrapper">
       <div class="container">
         <div class="row">
+          @foreach($articles as $article)
           <div class="col-xl-4">
             <div class="article-card">
               <div class="article-img">
-                <img src="images/stub.png" alt="" />
+                <img src="{{ $article->file_url }}" alt="" />
               </div>
               <div class="article-title">
-                <h4>Экспорт продукции</h4>
-                <span class="date">1 февраля 2023</span>
+                <a href="{{ route('article', $article->slug) }}"
+                  ><h4>{{ $article->title }}</h4></a
+                >
+                <span class="date">{{ $article->created_at }}</span>
               </div>
             </div>
           </div>
-          <div class="col-xl-4">
-            <div class="article-card">
-              <div class="article-img">
-                <img src="images/stub.png" alt="" />
-              </div>
-              <div class="article-title">
-                <h4>Экспорт продукции</h4>
-                <span class="date">1 февраля 2023</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4">
-            <div class="article-card">
-              <div class="article-img">
-                <img src="images/stub.png" alt="" />
-              </div>
-              <div class="article-title">
-                <h4>Экспорт продукции</h4>
-                <span class="date">1 февраля 2023</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4">
-            <div class="article-card">
-              <div class="article-img">
-                <img src="images/stub.png" alt="" />
-              </div>
-              <div class="article-title">
-                <h4>Экспорт продукции</h4>
-                <span class="date">1 февраля 2023</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4">
-            <div class="article-card">
-              <div class="article-img">
-                <img src="images/stub.png" alt="" />
-              </div>
-              <div class="article-title">
-                <h4>Экспорт продукции</h4>
-                <span class="date">1 февраля 2023</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4">
-            <div class="article-card">
-              <div class="article-img">
-                <img src="images/stub.png" alt="" />
-              </div>
-              <div class="article-title">
-                <h4>Экспорт продукции</h4>
-                <span class="date">1 февраля 2023</span>
-              </div>
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
     </div>

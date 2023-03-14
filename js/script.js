@@ -3,6 +3,8 @@ $(document).ready(function () {
   $(".hamburger").on("click", function () {
     $(".hamburger").toggleClass("is-active");
     $(".navigation-list").toggleClass("un-active");
+    $(".navigation-list").toggleClass("display");
+    $(".header").toggleClass("height");
   });
   // $(".article-txt").hover(function () {
   //     $(this).toggleClass("article-news-txt");
@@ -149,3 +151,46 @@ $(document).ready(function () {
     owl.trigger("prev.owl.carousel");
   });
 });
+
+class Lightbox {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    this.container = document.createElement("div");
+    this.container.id = "lightbox";
+    document.body.appendChild(this.container);
+
+    this.lightboxImg = document.createElement("img");
+    this.container.appendChild(this.lightboxImg);
+
+    this.addListeners();
+  }
+
+  addListeners() {
+    const images = document.querySelectorAll(".gallery-card img");
+    images.forEach((img) => {
+      img.addEventListener("click", () => this.galleryImgClicked(img));
+    });
+
+    this.container.addEventListener("click", () => {
+      this.hideLightbox();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") this.hideLightbox();
+    });
+  }
+
+  hideLightbox() {
+    this.container.classList.remove("active");
+  }
+
+  galleryImgClicked = (img) => {
+    this.lightboxImg.src = img.src;
+    this.container.classList.add("active");
+  };
+}
+
+const lightbox = new Lightbox();
